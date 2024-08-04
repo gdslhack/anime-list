@@ -51,51 +51,51 @@ const AnimeList = () => {
     }
 
     return (
-        <div className="container mx-auto p-4">
-            <div className="flex justify-between items-center mb-4">
+        <div className="container">
+            <div className="header">
                 <h1 className="text-4xl font-bold">Anime List</h1>
                 <SearchBar onSearch={handleSearch} />
             </div>
 
-            <h2 className="text-2xl font-bold mb-2">Top Anime</h2>
-            <ul className="flex space-x-4 mb-4 overflow-x-auto">
+            <h2 className="title">Top Anime</h2>
+            <ul className="anime-list">
                 {topAnime.map(anime => (
-                    <li key={anime.mal_id} className="border rounded-lg overflow-hidden shadow-lg bg-gray-800 text-white flex-none w-64">
+                    <li key={anime.mal_id} className="anime-item">
                         <a href={anime.url} target="_blank" rel="noopener noreferrer">
-                            <img src={anime.images.jpg.image_url} alt={anime.title} className="w-full h-48 object-cover"/>
+                            <img src={anime.images.jpg.image_url} alt={anime.title} />
                             <div className="p-4">
-                                <h2 className="text-xl font-bold mb-2">{anime.title}</h2>
-                                <p className="text-gray-400">Episodes: {anime.episodes ?? 'N/A'}</p>
+                                <h2 className="anime-item-title">{anime.title}</h2>
+                                <p className="anime-item-episodes">Episodes: {anime.episodes ?? 'N/A'}</p>
                             </div>
                         </a>
                     </li>
                 ))}
             </ul>
 
-            <h2 className="text-2xl font-bold mb-2">New Anime</h2>
-            <ul className="flex space-x-4 mb-4 overflow-x-auto">
+            <h2 className="title">New Anime</h2>
+            <ul className="anime-list">
                 {newAnime.map(anime => (
-                    <li key={anime.mal_id} className="border rounded-lg overflow-hidden shadow-lg bg-gray-800 text-white flex-none w-64">
+                    <li key={anime.mal_id} className="anime-item">
                         <a href={anime.url} target="_blank" rel="noopener noreferrer">
-                            <img src={anime.images.jpg.image_url} alt={anime.title} className="w-full h-48 object-cover"/>
+                            <img src={anime.images.jpg.image_url} alt={anime.title} />
                             <div className="p-4">
-                                <h2 className="text-xl font-bold mb-2">{anime.title}</h2>
-                                <p className="text-gray-400">Episodes: {anime.episodes ?? 'N/A'}</p>
+                                <h2 className="anime-item-title">{anime.title}</h2>
+                                <p className="anime-item-episodes">Episodes: {anime.episodes ?? 'N/A'}</p>
                             </div>
                         </a>
                     </li>
                 ))}
             </ul>
 
-            <h2 className="text-2xl font-bold mb-2">Search Results</h2>
+            <h2 className="title">Search Results</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {animeList.map(anime => (
-                    <div key={anime.mal_id} className="border rounded-lg overflow-hidden shadow-lg bg-gray-800 text-white">
+                    <div key={anime.mal_id} className="anime-item">
                         <a href={anime.url} target="_blank" rel="noopener noreferrer">
-                            <img src={anime.images.jpg.image_url} alt={anime.title} className="w-full h-48 object-cover"/>
+                            <img src={anime.images.jpg.image_url} alt={anime.title} />
                             <div className="p-4">
-                                <h2 className="text-xl font-bold mb-2">{anime.title}</h2>
-                                <p className="text-gray-400">Episodes: {anime.episodes ?? 'N/A'}</p>
+                                <h2 className="anime-item-title">{anime.title}</h2>
+                                <p className="anime-item-episodes">Episodes: {anime.episodes ?? 'N/A'}</p>
                             </div>
                         </a>
                     </div>

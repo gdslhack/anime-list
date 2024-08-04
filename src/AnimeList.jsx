@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import SearchBar from './SearchBar';
+import SearchBar from './components/SearchBar';
 
 const AnimeList = () => {
     const [animeList, setAnimeList] = useState([]);

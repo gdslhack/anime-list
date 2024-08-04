@@ -58,22 +58,30 @@ const AnimeList = () => {
             </div>
 
             <h2 className="text-2xl font-bold mb-2">Top Anime</h2>
-            <ul className="flex space-x-4 mb-4">
+            <ul className="flex space-x-4 mb-4 overflow-x-auto">
                 {topAnime.map(anime => (
-                    <li key={anime.mal_id} className="border p-2 rounded-lg shadow-lg bg-gray-800 text-white">
+                    <li key={anime.mal_id} className="border rounded-lg overflow-hidden shadow-lg bg-gray-800 text-white flex-none w-64">
                         <a href={anime.url} target="_blank" rel="noopener noreferrer">
-                            {anime.title}
+                            <img src={anime.images.jpg.image_url} alt={anime.title} className="w-full h-48 object-cover"/>
+                            <div className="p-4">
+                                <h2 className="text-xl font-bold mb-2">{anime.title}</h2>
+                                <p className="text-gray-400">Episodes: {anime.episodes ?? 'N/A'}</p>
+                            </div>
                         </a>
                     </li>
                 ))}
             </ul>
 
             <h2 className="text-2xl font-bold mb-2">New Anime</h2>
-            <ul className="flex space-x-4 mb-4">
+            <ul className="flex space-x-4 mb-4 overflow-x-auto">
                 {newAnime.map(anime => (
-                    <li key={anime.mal_id} className="border p-2 rounded-lg shadow-lg bg-gray-800 text-white">
+                    <li key={anime.mal_id} className="border rounded-lg overflow-hidden shadow-lg bg-gray-800 text-white flex-none w-64">
                         <a href={anime.url} target="_blank" rel="noopener noreferrer">
-                            {anime.title}
+                            <img src={anime.images.jpg.image_url} alt={anime.title} className="w-full h-48 object-cover"/>
+                            <div className="p-4">
+                                <h2 className="text-xl font-bold mb-2">{anime.title}</h2>
+                                <p className="text-gray-400">Episodes: {anime.episodes ?? 'N/A'}</p>
+                            </div>
                         </a>
                     </li>
                 ))}
@@ -84,7 +92,7 @@ const AnimeList = () => {
                 {animeList.map(anime => (
                     <div key={anime.mal_id} className="border rounded-lg overflow-hidden shadow-lg bg-gray-800 text-white">
                         <a href={anime.url} target="_blank" rel="noopener noreferrer">
-                            <img src={anime.images.jpg.image_url} alt={anime.title} className="w-full h-48 object-cover" />
+                            <img src={anime.images.jpg.image_url} alt={anime.title} className="w-full h-48 object-cover"/>
                             <div className="p-4">
                                 <h2 className="text-xl font-bold mb-2">{anime.title}</h2>
                                 <p className="text-gray-400">Episodes: {anime.episodes ?? 'N/A'}</p>

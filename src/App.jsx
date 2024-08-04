@@ -3,7 +3,7 @@ import AnimeList from './AnimeList';
 
 function App() {
     return (
-        <div className="App">
+        <div className="bg-gray-900 min-h-screen text-white">
             <AnimeList />
         </div>
     );

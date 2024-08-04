@@ -3,16 +3,22 @@ import axios from 'axios';
 
 const AnimeList = () => {
     const [animeList, setAnimeList] = useState([]);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
-        axios.get('https://api.jikan.moe/v3/top/anime')
+        axios.get('https://api.jikan.moe/v4/top/anime')
             .then(response => {
-                setAnimeList(response.data.top);
+                setAnimeList(response.data.data);
             })
             .catch(error => {
-                console.error('There was an error fetching the anime list!', error);
+                setError('There was an error fetching the anime list!');
+                console.error(error);
             });
     }, []);
+
+    if (error) {
+        return <div>{error}</div>;
+    }
 
     return (
         <div>

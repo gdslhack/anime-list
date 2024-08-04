@@ -4,6 +4,50 @@
 
 @layer components {
     .anime-card {
-        @apply border-2 border-gray-700 rounded-lg overflow-hidden shadow-lg bg-gray-800 text-white;
+        @apply border border-gray-700 rounded-lg overflow-hidden shadow-lg bg-gray-900 text-white;
+    }
+
+    .anime-card img {
+        @apply object-cover;
+    }
+
+    .container {
+        @apply mx-auto p-4;
+    }
+
+    .header {
+        @apply flex justify-between items-center mb-4;
+    }
+
+    .search-bar {
+        @apply flex items-center;
+    }
+
+    .search-input {
+        @apply p-2 rounded-l-lg border border-gray-600 bg-gray-800 text-white;
+    }
+
+    .search-button {
+        @apply p-2 bg-blue-500 text-white rounded-r-lg border border-blue-500;
+    }
+
+    .title {
+        @apply text-2xl font-bold mb-2;
+    }
+
+    .anime-list {
+        @apply flex space-x-4 mb-4 overflow-x-auto;
+    }
+
+    .anime-item {
+        @apply anime-card flex-none w-64;
+    }
+
+    .anime-item-title {
+        @apply text-xl font-bold mb-2;
+    }
+
+    .anime-item-episodes {
+        @apply text-gray-400;
     }
 }

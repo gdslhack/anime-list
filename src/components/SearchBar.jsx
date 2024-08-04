@@ -9,15 +9,15 @@ const SearchBar = ({ onSearch }) => {
     };
 
     return (
-        <form onSubmit={handleSearch} className="mb-4">
+        <form onSubmit={handleSearch} className="search-bar">
             <input
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search Anime"
-                className="p-2 rounded-l-lg border border-gray-400"
+                className="search-input"
             />
-            <button type="submit" className="p-2 bg-blue-500 text-white rounded-r-lg border border-blue-500">
+            <button type="submit" className="search-button">
                 Search
             </button>
         </form>

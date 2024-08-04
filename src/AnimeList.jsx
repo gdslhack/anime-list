@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import SearchBar from './components/SearchBar';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 const AnimeList = () => {
     const [animeList, setAnimeList] = useState([]);
@@ -51,56 +53,59 @@ const AnimeList = () => {
     }
 
     return (
-        <div className="container">
-            <div className="header">
-                <h1 className="text-4xl font-bold">Anime List</h1>
-                <SearchBar onSearch={handleSearch} />
+        <div className="bg-gray-900 text-white min-h-screen">
+            <Header />
+            <div className="container mx-auto p-4">
+                <div className="mb-4">
+                    <SearchBar onSearch={handleSearch} />
+                </div>
+
+                <h2 className="text-2xl font-bold mb-2">Top Anime</h2>
+                <ul className="flex space-x-4 mb-4 overflow-x-auto">
+                    {topAnime.map(anime => (
+                        <li key={anime.mal_id} className="anime-card flex-none w-64 transition-transform transform hover:scale-105">
+                            <a href={anime.url} target="_blank" rel="noopener noreferrer">
+                                <img src={anime.images.jpg.image_url} alt={anime.title} className="w-full h-48" />
+                                <div className="p-4">
+                                    <h2 className="text-xl font-bold mb-2">{anime.title}</h2>
+                                    <p className="text-gray-400">Episodes: {anime.episodes ?? 'N/A'}</p>
+                                </div>
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+
+                <h2 className="text-2xl font-bold mb-2">New Anime</h2>
+                <ul className="flex space-x-4 mb-4 overflow-x-auto">
+                    {newAnime.map(anime => (
+                        <li key={anime.mal_id} className="anime-card flex-none w-64 transition-transform transform hover:scale-105">
+                            <a href={anime.url} target="_blank" rel="noopener noreferrer">
+                                <img src={anime.images.jpg.image_url} alt={anime.title} className="w-full h-48" />
+                                <div className="p-4">
+                                    <h2 className="text-xl font-bold mb-2">{anime.title}</h2>
+                                    <p className="text-gray-400">Episodes: {anime.episodes ?? 'N/A'}</p>
+                                </div>
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+
+                <h2 className="text-2xl font-bold mb-2">Search Results</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    {animeList.map(anime => (
+                        <div key={anime.mal_id} className="anime-card transition-transform transform hover:scale-105">
+                            <a href={anime.url} target="_blank" rel="noopener noreferrer">
+                                <img src={anime.images.jpg.image_url} alt={anime.title} className="w-full h-48" />
+                                <div className="p-4">
+                                    <h2 className="text-xl font-bold mb-2">{anime.title}</h2>
+                                    <p className="text-gray-400">Episodes: {anime.episodes ?? 'N/A'}</p>
+                                </div>
+                            </a>
+                        </div>
+                    ))}
+                </div>
             </div>
-
-            <h2 className="title">Top Anime</h2>
-            <ul className="anime-list">
-                {topAnime.map(anime => (
-                    <li key={anime.mal_id} className="anime-item">
-                        <a href={anime.url} target="_blank" rel="noopener noreferrer">
-                            <img src={anime.images.jpg.image_url} alt={anime.title} />
-                            <div className="p-4">
-                                <h2 className="anime-item-title">{anime.title}</h2>
-                                <p className="anime-item-episodes">Episodes: {anime.episodes ?? 'N/A'}</p>
-                            </div>
-                        </a>
-                    </li>
-                ))}
-            </ul>
-
-            <h2 className="title">New Anime</h2>
-            <ul className="anime-list">
-                {newAnime.map(anime => (
-                    <li key={anime.mal_id} className="anime-item">
-                        <a href={anime.url} target="_blank" rel="noopener noreferrer">
-                            <img src={anime.images.jpg.image_url} alt={anime.title} />
-                            <div className="p-4">
-                                <h2 className="anime-item-title">{anime.title}</h2>
-                                <p className="anime-item-episodes">Episodes: {anime.episodes ?? 'N/A'}</p>
-                            </div>
-                        </a>
-                    </li>
-                ))}
-            </ul>
-
-            <h2 className="title">Search Results</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {animeList.map(anime => (
-                    <div key={anime.mal_id} className="anime-item">
-                        <a href={anime.url} target="_blank" rel="noopener noreferrer">
-                            <img src={anime.images.jpg.image_url} alt={anime.title} />
-                            <div className="p-4">
-                                <h2 className="anime-item-title">{anime.title}</h2>
-                                <p className="anime-item-episodes">Episodes: {anime.episodes ?? 'N/A'}</p>
-                            </div>
-                        </a>
-                    </div>
-                ))}
-            </div>
+            <Footer />
         </div>
     );
 };

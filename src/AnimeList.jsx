@@ -17,20 +17,20 @@ const AnimeList = () => {
     }, []);
 
     if (error) {
-        return <div>{error}</div>;
+        return <div className="text-center text-red-500">{error}</div>;
     }
 
     return (
         <div className="container mx-auto p-4">
-            <h1 className="text-4xl font-bold mb-4 text-center">Top Anime</h1>
+            <h1 className="text-4xl font-bold mb-8 text-center">Top Anime</h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {animeList.map(anime => (
-                    <div key={anime.mal_id} className="border rounded-lg overflow-hidden shadow-lg">
+                    <div key={anime.mal_id} className="border rounded-lg overflow-hidden shadow-lg bg-gray-800 text-white">
                         <a href={anime.url} target="_blank" rel="noopener noreferrer">
                             <img src={anime.images.jpg.image_url} alt={anime.title} className="w-full h-48 object-cover"/>
                             <div className="p-4">
-                                <h2 className="text-xl font-bold">{anime.title}</h2>
-                                <p className="text-gray-700">Episodes: {anime.episodes ?? 'N/A'}</p>
+                                <h2 className="text-xl font-bold mb-2">{anime.title}</h2>
+                                <p className="text-gray-400">Episodes: {anime.episodes ?? 'N/A'}</p>
                             </div>
                         </a>
                     </div>
